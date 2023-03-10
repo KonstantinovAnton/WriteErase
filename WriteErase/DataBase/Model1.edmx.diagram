@@ -9,9 +9,9 @@
         <EntityTypeShape EntityType="practic11Model.OrderProduct" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="practic11Model.OrderStatus" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
         <EntityTypeShape EntityType="practic11Model.PickupPoint" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic11Model.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic11Model.Product" Width="2" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="practic11Model.ProductCategory" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic11Model.ProductManufacturer" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic11Model.ProductManufacturer" Width="2.125" PointX="0.75" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="practic11Model.ProductSupplier" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="practic11Model.Role" Width="1.5" PointX="1.5" PointY="26.125" IsExpanded="true" />
         <EntityTypeShape EntityType="practic11Model.Street" Width="1.5" PointX="1.5" PointY="19.875" IsExpanded="true" />

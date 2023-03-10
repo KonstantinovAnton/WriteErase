@@ -11,7 +11,8 @@ namespace WriteErase.DataBase
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Windows.Media;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,6 +25,25 @@ namespace WriteErase.DataBase
         public string ProductName { get; set; }
         public int UnitID { get; set; }
         public decimal ProductCost { get; set; }
+
+        public decimal ProductCostWithDiscount {
+            get
+            {
+                if (ProductActualDiscount != null)
+                {
+                    double discountSize = Convert.ToDouble(ProductActualDiscount) / 100;
+                    decimal actualPrice = ProductCost - ProductCost * Convert.ToDecimal(discountSize);
+                    return actualPrice;
+                }
+                   
+                else return 0;
+            }
+            set
+            {
+            }
+        }
+
+        
         public Nullable<byte> ProductDiscountAmount { get; set; }
         public int ProductManufacturerID { get; set; }
         public int ProductSupplierID { get; set; }
@@ -39,5 +59,22 @@ namespace WriteErase.DataBase
         public virtual ProductManufacturer ProductManufacturer { get; set; }
         public virtual ProductSupplier ProductSupplier { get; set; }
         public virtual Unit Unit { get; set; }
+
+        public SolidColorBrush DiscountColor
+        {
+            get
+            {
+                if (ProductActualDiscount > 15)
+                {
+                    SolidColorBrush withDis = new SolidColorBrush(Color.FromRgb(127, 255, 0));
+                    return withDis;
+                }
+                else
+                {
+                    SolidColorBrush withoutDis = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                    return withoutDis;
+                }
+            }
+        }
     }
 }
