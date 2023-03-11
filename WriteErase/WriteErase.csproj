@@ -73,6 +73,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Base.cs" />
+    <Compile Include="Classes\GlobalValues.cs" />
     <Compile Include="DataBase\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -135,6 +136,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PageOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PageProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -143,6 +148,9 @@
   <ItemGroup>
     <Compile Include="Pages\PageAuthorization.xaml.cs">
       <DependentUpon>PageAuthorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageOrder.xaml.cs">
+      <DependentUpon>PageOrder.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageProduct.xaml.cs">
       <DependentUpon>PageProduct.xaml</DependentUpon>

@@ -11,6 +11,7 @@ namespace WriteErase.DataBase
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows.Media;
 
     public partial class Product
@@ -74,6 +75,17 @@ namespace WriteErase.DataBase
                     SolidColorBrush withoutDis = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                     return withoutDis;
                 }
+            }
+        }
+
+        public virtual string Count
+        {
+            get
+            {
+                List<DataBase.OrderProduct> listOrderProduct = Classes.Base.EM.OrderProduct.Where(x => x.OrderID == 54).ToList();
+                DataBase.OrderProduct orderProduct = listOrderProduct.FirstOrDefault(x => x.ProductArticleNumber == ProductArticleNumber);
+
+                return Convert.ToString(orderProduct.OrderCount);
             }
         }
     }

@@ -20,18 +20,48 @@ namespace WriteErase.Pages
     /// </summary>
     public partial class PageProduct : Page
     {
-      
+        int f = 0;
+        List<DataBase.Product> listProduct;
+        List<DataBase.Product> korzina;
+    
         public PageProduct()
         {
+    
             InitializeComponent();
+            korzina = new List<DataBase.Product>();
 
 
-            listView.ItemsSource = Classes.Base.EM.Product.ToList();
             comboBoxSort.SelectedIndex = 0;
             comboBoxDiscount.SelectedIndex = 0;
 
+            listView.ItemsSource = Classes.Base.EM.Product.ToList();
+           
             textBlockCountShow.Text = Classes.Base.EM.Product.ToList().Count.ToString();
             textBlockAllCount.Text = Classes.Base.EM.Product.ToList().Count.ToString();
+
+            btnGotoOrder.Visibility = Visibility.Collapsed;
+
+            clearTable();
+            
+        }
+
+        private void clearTable()
+        {
+            List<DataBase.OrderProduct> orderProducts = Classes.Base.EM.OrderProduct.Where(x => x.OrderID == 54).ToList();
+
+            try
+            {
+                foreach (var item in orderProducts)
+                {
+                    Classes.Base.EM.OrderProduct.Remove(item);
+                }
+
+                Classes.Base.EM.SaveChanges();
+            }
+            catch
+            {
+
+            }
         }
 
         private void tbCostWithDiscount_Loaded(object sender, RoutedEventArgs e)
@@ -70,7 +100,7 @@ namespace WriteErase.Pages
 
         private void sortData()
         {
-            List<DataBase.Product> listProduct = new List<DataBase.Product>();
+            listProduct = new List<DataBase.Product>();
            
 
               // Фильтрация по скидке
@@ -133,20 +163,19 @@ namespace WriteErase.Pages
             textBlockCountShow.Text = listProduct.Count.ToString();
             textBlockAllCount.Text = Classes.Base.EM.Product.ToList().Count.ToString();
 
-
-           
-                if (listProduct.Count == 0)
-                {
-                    MessageBox.Show("Мы не нашли таких товаров. Попробуйте поискать что-то ещё", "Нет товаров",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            
+            if (listProduct.Count == 0)
+            {
+                 MessageBox.Show("Мы не нашли таких товаров. Попробуйте поискать что-то ещё", "Нет товаров",
+                   MessageBoxButton.OK, MessageBoxImage.Information);
+            }      
         }
 
         private void comboBoxDiscount_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-         
-            sortData();
+            if (f < 2)
+                f++;
+            else
+                sortData();
         }
 
         private void textBoxSearchName_TextChanged(object sender, TextChangedEventArgs e)
@@ -156,7 +185,46 @@ namespace WriteErase.Pages
         }
         private void comboBoxSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            sortData();
+            if (f != 0)
+                sortData();
+            else f++;
+        }
+
+       
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+            DataBase.Product product = (DataBase.Product) listView.SelectedItem;
+            //DataBase.Product product = Classes.Base.EM.Product.FirstOrDefault(x => x.)
+            btnGotoOrder.Visibility = Visibility.Visible;
+
+            korzina.Add(product);
+
+
+            DataBase.OrderProduct orderProduct = new DataBase.OrderProduct();
+
+            orderProduct.OrderID = 54;
+            orderProduct.ProductArticleNumber = product.ProductArticleNumber;
+            orderProduct.OrderCount = 1;
+
+            try
+            { 
+                Classes.Base.EM.OrderProduct.Add(orderProduct);
+                Classes.Base.EM.SaveChanges();
+            }
+            catch
+            {
+
+            }
+            tbKorzina.Text = "В заказе " +  korzina.Count.ToString() + " товара";
+        }
+
+
+        private void btnGotoOrder_Click(object sender, RoutedEventArgs e) // Перейти к заказу
+        {        
+            Classes.GlobalValues.listOrder = korzina;
+            NavigationService.Navigate(new PageOrder());
         }
     }
 
