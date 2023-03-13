@@ -39,7 +39,7 @@ namespace WriteErase.Pages
             textBlockCountShow.Text = Classes.Base.EM.Product.ToList().Count.ToString();
             textBlockAllCount.Text = Classes.Base.EM.Product.ToList().Count.ToString();
 
-            btnGotoOrder.Visibility = Visibility.Collapsed;
+            btnGotoOrder.Visibility = Visibility.Hidden;
 
             clearTable();
             
@@ -225,6 +225,11 @@ namespace WriteErase.Pages
         {        
             Classes.GlobalValues.listOrder = korzina;
             NavigationService.Navigate(new PageOrder());
+        }
+
+        private void btnGotoAllOrders_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PageAllOrders());
         }
     }
 

@@ -31,7 +31,8 @@ namespace WriteErase.Pages
 
             if (user != null)
             {
-                MessageBox.Show("Hello");
+             //   MessageBox.Show("Hello");
+                Classes.GlobalValues.isFirstEnterIntoPageOrder = true;
                 NavigationService.Navigate(new PageProduct());
             }
             else

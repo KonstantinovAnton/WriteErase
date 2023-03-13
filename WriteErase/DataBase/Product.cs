@@ -26,8 +26,12 @@ namespace WriteErase.DataBase
         public string ProductName { get; set; }
         public int UnitID { get; set; }
         public decimal ProductCost { get; set; }
-
-        public decimal ProductCostWithDiscount {
+        public Nullable<byte> ProductDiscountAmount { get; set; }
+        public int ProductManufacturerID { get; set; }
+        public int ProductSupplierID { get; set; }
+        public int ProductCategory { get; set; }
+        public decimal ProductCostWithDiscount
+        {
             get
             {
                 if (ProductActualDiscount != null)
@@ -36,19 +40,13 @@ namespace WriteErase.DataBase
                     decimal actualPrice = ProductCost - ProductCost * Convert.ToDecimal(discountSize);
                     return actualPrice;
                 }
-                   
+
                 else return 0;
             }
             set
             {
             }
         }
-
-        
-        public Nullable<byte> ProductDiscountAmount { get; set; }
-        public int ProductManufacturerID { get; set; }
-        public int ProductSupplierID { get; set; }
-        public int ProductCategory { get; set; }
         public Nullable<byte> ProductActualDiscount { get; set; }
         public int ProductQuantityInStock { get; set; }
         public string ProductDescription { get; set; }
@@ -60,7 +58,6 @@ namespace WriteErase.DataBase
         public virtual ProductManufacturer ProductManufacturer { get; set; }
         public virtual ProductSupplier ProductSupplier { get; set; }
         public virtual Unit Unit { get; set; }
-
         public SolidColorBrush DiscountColor
         {
             get
@@ -90,3 +87,4 @@ namespace WriteErase.DataBase
         }
     }
 }
+

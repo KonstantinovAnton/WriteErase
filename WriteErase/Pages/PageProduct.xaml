@@ -17,7 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="110"/>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
         
         <StackPanel>
@@ -52,7 +52,7 @@
 
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <ListView Name="listView" Height="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            <ListView Name="listView" Height="260" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="1">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
@@ -88,9 +88,10 @@
                 </ListView.ContextMenu>
             </ListView>
         </StackPanel>
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Background="AliceBlue">
             <TextBlock Name="tbKorzina"></TextBlock>
             <Button Name="btnGotoOrder" Click="btnGotoOrder_Click">Посмотреть заказ</Button>    
+            <Button Name="btnGotoAllOrders" Click="btnGotoAllOrders_Click">Посмотреть все заказы</Button>
         </StackPanel>
     </Grid>
 </Page>

@@ -24,6 +24,7 @@ namespace WriteErase.Pages
     {
         List<DataBase.Product> listOrder;
         decimal totalPrice;
+        decimal totalPriceWithoutDiscount;
 
         public PageOrder()
         {
@@ -35,6 +36,7 @@ namespace WriteErase.Pages
 
             List<DataBase.OrderProduct> listOrderProduct = Classes.Base.EM.OrderProduct.Where(x => x.OrderID == 54).ToList();
 
+
             foreach (var item in listOrderProduct)
             {
                 listOrder.Add(Classes.Base.EM.Product.FirstOrDefault(x => x.ProductArticleNumber == item.ProductArticleNumber));
@@ -42,19 +44,41 @@ namespace WriteErase.Pages
 
             listView.ItemsSource = listOrder;
 
-            getTotalPrice();
+            if(Classes.GlobalValues.isFirstEnterIntoPageOrder)
+                getTotalPrice();
+            else
+            {
+                totalPriceWithoutDiscount = Classes.GlobalValues.totalPriceWithoutDiscount;
+                totalPrice = Classes.GlobalValues.totalPrice;
 
-            tbTotalPrice.Text = "Общая стоимость: " + string.Format("{0:F}", totalPrice) + " руб.";
+                tbTotalPrice.Text = "Общая стоимость: " + string.Format("{0:F}", Classes.GlobalValues.totalPrice) + " руб.";
+                tbDiscountOrder.Text = "Скидка: " + string.Format("{0:F}", (Classes.GlobalValues.totalPriceWithoutDiscount - Classes.GlobalValues.totalPrice)) + " руб.";
+            }
 
+
+
+            cbPoint.ItemsSource = Classes.Base.EM.PickupPoint.ToList();
+
+            cbPoint.DisplayMemberPath = "PickupPointNumber";
+            cbPoint.SelectedValuePath = "PickupPointNumberID";
+
+            cbPoint.SelectedIndex = 0;
         }
 
         private void getTotalPrice()
         {
+
             totalPrice = listOrder.Sum(x => x.ProductCostWithDiscount);
 
             var li = listOrder.FindAll(x => x.ProductActualDiscount == null).ToList();
 
             totalPrice += li.Sum(x => x.ProductCost);
+
+            totalPriceWithoutDiscount = listOrder.Sum(x => x.ProductCost);
+
+            tbTotalPrice.Text = "Общая стоимость: " + string.Format("{0:F}", totalPrice) + " руб.";
+            tbDiscountOrder.Text = "Скидка: " + string.Format("{0:F}", (totalPriceWithoutDiscount - totalPrice)) + " руб.";
+
         }
 
         private void tbCost_Loaded(object sender, RoutedEventArgs e)
@@ -104,6 +128,11 @@ namespace WriteErase.Pages
 
                 Classes.Base.EM.OrderProduct.Remove(orderProduct);
                 Classes.Base.EM.SaveChanges();
+                Classes.GlobalValues.isFirstEnterIntoPageOrder = false;
+
+                Classes.GlobalValues.totalPrice = totalPrice;
+                Classes.GlobalValues.totalPriceWithoutDiscount = totalPriceWithoutDiscount;
+
                 NavigationService.Navigate(new PageOrder());
             }
             catch
@@ -112,42 +141,6 @@ namespace WriteErase.Pages
             }
         }
 
-        private void tbCount_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-            TextBox tb = (TextBox)sender;
-            DataBase.Product product = listOrder.FirstOrDefault(x => x.ProductArticleNumber == tb.Uid);
-
-
-            try
-            {
-                int count = Convert.ToInt32(tb.Text);
-
-                if(count < 0)
-                {
-                    MessageBox.Show("Отрицательное кол-во не подойдет. Введите положительное число", "Отрицательное число",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
-
-                    return;
-                }
-
-                if(product.ProductActualDiscount == null)
-                {
-                    totalPrice = totalPrice - product.ProductCost + count * product.ProductCost;
-                }
-                else
-                {
-                    totalPrice = totalPrice - product.ProductCostWithDiscount + count * product.ProductCostWithDiscount;
-                }
-
-                
-                tbTotalPrice.Text = "Общая стоимость: " + string.Format("{0:F}", totalPrice) + " руб.";
-            }
-            catch
-            {
-
-            }
-        }
 
         private void btnMinus_Click(object sender, RoutedEventArgs e)
         {
@@ -173,7 +166,16 @@ namespace WriteErase.Pages
 
                         Classes.Base.EM.OrderProduct.Remove(orderProductDel);
                         Classes.Base.EM.SaveChanges();
-                        NavigationService.Navigate(new PageOrder());
+
+                        DataBase.Product product1 = Classes.Base.EM.Product.FirstOrDefault(x => x.ProductArticleNumber == btn.Uid);
+                        totalPrice -= product1.ProductCostWithDiscount;
+                        totalPriceWithoutDiscount -= product1.ProductCost;
+
+                        Classes.GlobalValues.totalPrice = totalPrice;
+                        Classes.GlobalValues.totalPriceWithoutDiscount = totalPriceWithoutDiscount;
+
+                        Classes.GlobalValues.isFirstEnterIntoPageOrder = false;
+
                     }
                     catch
                     {
@@ -181,12 +183,34 @@ namespace WriteErase.Pages
                     }
 
                 }
+                else
+                {
+                    try
+                    {
+                        List<DataBase.OrderProduct> listOrderProduct2 = Classes.Base.EM.OrderProduct.Where(x => x.OrderID == 54).ToList();
 
-                orderProduct.OrderCount--;
+                        DataBase.OrderProduct orderProduct2 = listOrderProduct2.FirstOrDefault(x => x.ProductArticleNumber == btn.Uid);
+                        orderProduct2.OrderCount--;
 
-                Classes.Base.EM.SaveChanges();
+                        Classes.Base.EM.SaveChanges();
 
-              
+                        DataBase.Product product1 = Classes.Base.EM.Product.FirstOrDefault(x => x.ProductArticleNumber == btn.Uid);
+                        totalPrice -= product1.ProductCostWithDiscount;
+                        totalPriceWithoutDiscount -= product1.ProductCost;
+
+                        Classes.GlobalValues.totalPrice = totalPrice;
+                        Classes.GlobalValues.totalPriceWithoutDiscount = totalPriceWithoutDiscount;
+
+                        Classes.GlobalValues.isFirstEnterIntoPageOrder = false;
+
+                    }
+                    catch
+                    {
+
+                    }
+                }
+
+            
             }
             catch
             {
@@ -210,6 +234,16 @@ namespace WriteErase.Pages
                 orderProduct.OrderCount++;
 
                 Classes.Base.EM.SaveChanges();
+
+                DataBase.Product product1 = Classes.Base.EM.Product.FirstOrDefault(x => x.ProductArticleNumber == btn.Uid);
+                totalPrice += product1.ProductCostWithDiscount;
+                totalPriceWithoutDiscount += product1.ProductCost;
+
+                Classes.GlobalValues.totalPrice = totalPrice;
+                Classes.GlobalValues.totalPriceWithoutDiscount = totalPriceWithoutDiscount;
+
+                Classes.GlobalValues.isFirstEnterIntoPageOrder = false;
+
             }
             catch
             {

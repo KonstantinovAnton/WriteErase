@@ -9,5 +9,9 @@ namespace WriteErase.Classes
     public static class GlobalValues
     {
        public static List<DataBase.Product> listOrder;
+        public static bool isFirstEnterIntoPageOrder;
+        public static decimal totalPriceWithoutDiscount;
+        public static decimal totalPrice;
+        public static int orderID;
     }
 }

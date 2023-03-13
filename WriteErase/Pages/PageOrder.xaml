@@ -16,7 +16,7 @@
         <Grid.RowDefinitions>
 
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0">
@@ -64,8 +64,19 @@
 
             </ListView>
         </StackPanel>
+        
+        
+        
         <StackPanel Grid.Row="1">
-            <TextBlock Name="tbTotalPrice"></TextBlock>
+            <StackPanel>
+                <TextBlock>Выберите пункт выдачи</TextBlock>
+                <ComboBox Name="cbPoint"></ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="tbTotalPrice"></TextBlock>
+                <TextBlock Name="tbDiscountOrder"></TextBlock>
+            </StackPanel>
+            
         </StackPanel>
     </Grid>
 </Page>

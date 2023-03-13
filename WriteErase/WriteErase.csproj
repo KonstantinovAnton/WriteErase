@@ -132,7 +132,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\PageAllOrders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PageAuthorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageEditOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,8 +154,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\PageAllOrders.xaml.cs">
+      <DependentUpon>PageAllOrders.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageAuthorization.xaml.cs">
       <DependentUpon>PageAuthorization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageEditOrder.xaml.cs">
+      <DependentUpon>PageEditOrder.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageOrder.xaml.cs">
       <DependentUpon>PageOrder.xaml</DependentUpon>
