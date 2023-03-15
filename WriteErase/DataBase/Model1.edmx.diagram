@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bea64e070def487689f19bc07643ce71" Name="Diagram1">
+      <Diagram DiagramId="e72a623e2e924847a52ea887a4a9c11b" Name="Diagram1">
         <EntityTypeShape EntityType="practic11Model.Order" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic11Model.OrderProduct" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic11Model.OrderProduct" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="practic11Model.OrderStatus" Width="1.5" PointX="0.75" PointY="13.25" IsExpanded="true" />
         <EntityTypeShape EntityType="practic11Model.PickupPoint" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic11Model.Product" Width="2" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic11Model.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="practic11Model.ProductCategory" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="practic11Model.ProductManufacturer" Width="2.125" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="practic11Model.ProductManufacturer" Width="2.75" PointX="0.5" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="practic11Model.ProductSupplier" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="practic11Model.Role" Width="1.5" PointX="1.5" PointY="26.125" IsExpanded="true" />
         <EntityTypeShape EntityType="practic11Model.Street" Width="1.5" PointX="1.5" PointY="19.875" IsExpanded="true" />

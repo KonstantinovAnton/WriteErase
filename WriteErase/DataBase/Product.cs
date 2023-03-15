@@ -30,23 +30,6 @@ namespace WriteErase.DataBase
         public int ProductManufacturerID { get; set; }
         public int ProductSupplierID { get; set; }
         public int ProductCategory { get; set; }
-        public decimal ProductCostWithDiscount
-        {
-            get
-            {
-                if (ProductActualDiscount != null)
-                {
-                    double discountSize = Convert.ToDouble(ProductActualDiscount) / 100;
-                    decimal actualPrice = ProductCost - ProductCost * Convert.ToDecimal(discountSize);
-                    return actualPrice;
-                }
-
-                else return 0;
-            }
-            set
-            {
-            }
-        }
         public Nullable<byte> ProductActualDiscount { get; set; }
         public int ProductQuantityInStock { get; set; }
         public string ProductDescription { get; set; }
@@ -74,7 +57,23 @@ namespace WriteErase.DataBase
                 }
             }
         }
+        public decimal ProductCostWithDiscount
+        {
+            get
+            {
+                if (ProductActualDiscount != null)
+                {
+                    double discountSize = Convert.ToDouble(ProductActualDiscount) / 100;
+                    decimal actualPrice = ProductCost - ProductCost * Convert.ToDecimal(discountSize);
+                    return actualPrice;
+                }
 
+                else return 0;
+            }
+            set
+            {
+            }
+        }
         public virtual string Count
         {
             get
@@ -87,4 +86,3 @@ namespace WriteErase.DataBase
         }
     }
 }
-

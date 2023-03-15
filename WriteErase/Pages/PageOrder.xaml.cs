@@ -51,6 +51,8 @@ namespace WriteErase.Pages
                 totalPriceWithoutDiscount = Classes.GlobalValues.totalPriceWithoutDiscount;
                 totalPrice = Classes.GlobalValues.totalPrice;
 
+               
+          
                 tbTotalPrice.Text = "Общая стоимость: " + string.Format("{0:F}", Classes.GlobalValues.totalPrice) + " руб.";
                 tbDiscountOrder.Text = "Скидка: " + string.Format("{0:F}", (Classes.GlobalValues.totalPriceWithoutDiscount - Classes.GlobalValues.totalPrice)) + " руб.";
             }

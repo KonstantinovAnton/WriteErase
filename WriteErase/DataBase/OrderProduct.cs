@@ -14,11 +14,16 @@ namespace WriteErase.DataBase
     
     public partial class OrderProduct
     {
+        public int OrderProductID { get; set; }
         public int OrderID { get; set; }
         public string ProductArticleNumber { get; set; }
         public int OrderCount { get; set; }
     
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }
+
+      
+
+
     }
 }

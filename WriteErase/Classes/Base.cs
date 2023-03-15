@@ -8,6 +8,6 @@ namespace WriteErase.Classes
 {
     internal class Base
     {
-        public static DataBase.Entities EM;
+        public static DataBase.Entities1 EM;
     }
 }

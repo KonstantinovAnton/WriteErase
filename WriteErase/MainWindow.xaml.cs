@@ -23,7 +23,7 @@ namespace WriteErase
         public MainWindow()
         {
             InitializeComponent();
-            Classes.Base.EM = new DataBase.Entities();
+            Classes.Base.EM = new DataBase.Entities1();
             frm.Navigate(new Pages.PageAuthorization());
         }
 

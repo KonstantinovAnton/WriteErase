@@ -11,7 +11,7 @@
           </Key>
           <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderDate" Type="datetime" Nullable="false" />
-          <Property Name="OrderDeliveryDate" Type="datetime" />
+          <Property Name="OrderDeliveryDate" Type="datetime" Nullable="false" />
           <Property Name="PickupPointID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
@@ -20,9 +20,9 @@
         </EntityType>
         <EntityType Name="OrderProduct">
           <Key>
-            <PropertyRef Name="OrderID" />
-            <PropertyRef Name="ProductArticleNumber" />
+            <PropertyRef Name="OrderProductID" />
           </Key>
+          <Property Name="OrderProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderID" Type="int" Nullable="false" />
           <Property Name="ProductArticleNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="OrderCount" Type="int" Nullable="false" />
@@ -326,7 +326,7 @@
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="OrderDeliveryDate" Type="DateTime" Precision="3" />
+          <Property Name="OrderDeliveryDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PickupPointID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
@@ -339,9 +339,9 @@
         </EntityType>
         <EntityType Name="OrderProduct">
           <Key>
-            <PropertyRef Name="OrderID" />
-            <PropertyRef Name="ProductArticleNumber" />
+            <PropertyRef Name="OrderProductID" />
           </Key>
+          <Property Name="OrderProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="ProductArticleNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OrderCount" Type="Int32" Nullable="false" />
@@ -593,7 +593,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" />
           <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" />
@@ -657,7 +657,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище practic11ModelContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище practic11ModelContainer" CdmEntityContainer="Entities1">
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="practic11Model.Order">
               <MappingFragment StoreEntitySet="Order">
@@ -675,6 +675,7 @@
           <EntitySetMapping Name="OrderProduct">
             <EntityTypeMapping TypeName="practic11Model.OrderProduct">
               <MappingFragment StoreEntitySet="OrderProduct">
+                <ScalarProperty Name="OrderProductID" ColumnName="OrderProductID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="ProductArticleNumber" ColumnName="ProductArticleNumber" />
                 <ScalarProperty Name="OrderCount" ColumnName="OrderCount" />

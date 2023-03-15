@@ -22,7 +22,7 @@ namespace WriteErase.DataBase
     
         public int OrderID { get; set; }
         public System.DateTime OrderDate { get; set; }
-        public Nullable<System.DateTime> OrderDeliveryDate { get; set; }
+        public System.DateTime OrderDeliveryDate { get; set; }
         public int PickupPointID { get; set; }
         public int UserID { get; set; }
         public string Code { get; set; }

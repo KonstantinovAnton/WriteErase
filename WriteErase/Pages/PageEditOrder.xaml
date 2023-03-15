@@ -8,12 +8,93 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageEditOrder">
 
+    <Page.Resources>
+        <BitmapImage x:Key="defaultImg" UriSource="..\Resourсes\picture.png"/>
+    </Page.Resources>
+
     <Grid>
-        <StackPanel>
-            <TextBlock Name="tbOrderNomer"></TextBlock>
-            <TextBlock Name="tbOrderCode"></TextBlock>
-            <TextBlock Name="tbOrderDate"></TextBlock>
-            <TextBox Name="tbDelDate"></TextBox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <StackPanel Name="stackPanelOrder" Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Номер заказа "></TextBlock>
+                <TextBlock Name="tbOrderNomer"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Код "></TextBlock>
+                <TextBlock Name="tbOrderCode"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Дата заказа "></TextBlock>
+                <TextBlock Name="tbOrderDate"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Дата доставки "></TextBlock>
+                <TextBox Name="tbDelDate"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Клиент: "></TextBlock>
+                <TextBlock Name="tbUser"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Статус"></TextBlock>
+                <ComboBox Name="cbStatus">
+                    <ComboBoxItem>Новый</ComboBoxItem>
+                    <ComboBoxItem>Завершен</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
         </StackPanel>
+        <StackPanel Grid.Row="1">
+            <ListView Name="listViewProductsInOrder" Height="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="1">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10" CornerRadius="20" BorderThickness="1" BorderBrush="#FF9A9999">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="300"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="70"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <Image Source="{Binding Product.ProductPhoto, TargetNullValue={StaticResource defaultImg}}" Grid.Column="0" Height="200"/>
+                                <StackPanel Grid.Column="1" Margin="10">
+                                    <TextBlock Text="{Binding  Product.ProductName}" TextWrapping="Wrap" Margin="10"/>
+                                    <TextBlock Text="{Binding Product.ProductManufacturer.ProductManufacturerName}" TextWrapping="Wrap" Margin="10"/>
+                                    <TextBlock Text="{Binding Product.ProductDescription}" TextWrapping="Wrap" Margin="10"/>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Кол-во: "></TextBlock>
+                                        <TextBlock Name="textCount" Width="20" Text="{Binding OrderCount}"></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Text="Общая сумма: "></TextBlock>
+            <TextBlock Name="tbItogo"></TextBlock>
+            <TextBlock Text="Скидка: "></TextBlock>
+            <TextBlock Name="tbPriceWithouDisc"></TextBlock>
+            <Button Name="btnBack" Click="btnBack_Click">Вернуться</Button>
+        </StackPanel>
+
     </Grid>
 </Page>
