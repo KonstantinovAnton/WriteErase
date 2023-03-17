@@ -42,9 +42,30 @@ namespace WriteErase.Pages
             btnGotoOrder.Visibility = Visibility.Hidden;
 
             clearTable();
-            
+            checkRole();
+
+
         }
 
+        // проверить роль
+        private void checkRole()
+        {
+            switch (Classes.GlobalValues.role)
+            {
+                // Если клиент
+                case 1:
+                    btnGotoAllOrders.Visibility = Visibility.Collapsed;
+                    btnAddProduct.Visibility = Visibility.Collapsed;
+                    break;               
+                // Если менеджер
+                case 3:
+                    btnAddProduct.Visibility = Visibility.Collapsed;
+                    break;
+                
+            }
+        }
+
+        // очистить таблицу
         private void clearTable()
         {
             List<DataBase.OrderProduct> orderProducts = Classes.Base.EM.OrderProduct.Where(x => x.OrderID == 54).ToList();
@@ -64,12 +85,14 @@ namespace WriteErase.Pages
             }
         }
 
+        // подгрузить цену со скидкой
         private void tbCostWithDiscount_Loaded(object sender, RoutedEventArgs e)
         {
             TextBlock textBlock = (TextBlock)sender;
             showTextBlock(textBlock);
         }
 
+        // отобразить текстовый блок
         private void showTextBlock(TextBlock tb)
         {
             if (tb.Uid != null)
@@ -82,6 +105,7 @@ namespace WriteErase.Pages
             }
         }
 
+        // подгрузить цену
         private void tbCost_Loaded(object sender, RoutedEventArgs e)
         {
             TextBlock tb = (TextBlock)sender;
@@ -92,12 +116,15 @@ namespace WriteErase.Pages
             }
           
         }
+
+        // подгрузить текстовые блоки
         private void TextBlock_Loaded(object sender, RoutedEventArgs e)
         {
             TextBlock tb = (TextBlock)sender;
             showTextBlock(tb);
         }
 
+        // сортировка и фильтр
         private void sortData()
         {
             listProduct = new List<DataBase.Product>();
@@ -129,15 +156,7 @@ namespace WriteErase.Pages
               {
                   listProduct = listProduct.Where(x => x.ProductName.ToLower().Contains(textBoxSearchName.Text.ToLower())).ToList();
               }
-            /*
-
-           // Фильтрация по описанию
-
-           if (textBoxSearchDescription.Text != " " && textBoxSearchDescription.Text != "")
-           {
-               listProduct = listProduct.Where(x => x.Title.ToLower().Contains(textBoxSearchDescription.Text.ToLower())).ToList();
-           }
-         */
+          
 
             // Сортировка по возрастанию и убыванию
             if (comboBoxSort.SelectedIndex == 1)
@@ -190,13 +209,12 @@ namespace WriteErase.Pages
             else f++;
         }
 
-       
+        // обработка нажатия на клик меню
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
             DataBase.Product product = (DataBase.Product) listView.SelectedItem;
-            //DataBase.Product product = Classes.Base.EM.Product.FirstOrDefault(x => x.)
             btnGotoOrder.Visibility = Visibility.Visible;
 
             korzina.Add(product);
@@ -215,21 +233,56 @@ namespace WriteErase.Pages
             }
             catch
             {
-
             }
             tbKorzina.Text = "В заказе " +  korzina.Count.ToString() + " товара";
         }
 
 
+        // открыть заказ
         private void btnGotoOrder_Click(object sender, RoutedEventArgs e) // Перейти к заказу
         {        
             Classes.GlobalValues.listOrder = korzina;
             NavigationService.Navigate(new PageOrder());
         }
 
+        // открыть все заказы
         private void btnGotoAllOrders_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new PageAllOrders());
+        }
+
+        private void btnAddProduct_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        // отобразить кнопку удаления продуктов
+        private void btnDeleteProduct_Loaded(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if (Classes.GlobalValues.role == 1)
+                btn.Visibility = Visibility.Collapsed;
+            else
+            {
+                btn.Visibility = Visibility.Visible;
+            }
+
+        }
+
+        // вернуться назад
+        private void btnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PageAuthorization());
+        }
+
+        // удалить товар
+        private void btnDeleteProduct_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult rsltMessageBox = MessageBox.Show("Удалить товар?", "Удаление товара", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if(rsltMessageBox == MessageBoxResult.Yes)
+            {
+                MessageBox.Show("Товар удален");
+            }
         }
     }
 

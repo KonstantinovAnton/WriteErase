@@ -8,6 +8,7 @@ namespace WriteErase.Classes
 {
     internal class Base
     {
+        // Подключение к БД
         public static DataBase.Entities1 EM;
     }
 }

@@ -5,9 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WriteErase"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="WriteErase" Height="450" Width="800"
+        MinHeight="650" MinWidth="1100"
+        Icon="Resourсes\icon.ico"     
+        >
     <Grid>
-        <Frame Name="frm" Grid.Row="1" NavigationUIVisibility="Hidden" Background="#76e383">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Background="#498c51">
+            <TextBlock Name="tbRole" FontFamily="Comic Sans MS" Foreground="White"></TextBlock>
+        </StackPanel>
+            <Frame Name="frm" Grid.Row="1" NavigationUIVisibility="Hidden" Background="#76e383">
         </Frame>
 
         

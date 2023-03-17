@@ -6,23 +6,27 @@
       xmlns:local="clr-namespace:WriteErase.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageEditOrder">
+      Title="PageEditOrder"
+       FontFamily="Comic Sans MS"
+        FontSize="20">
 
     <Page.Resources>
         <BitmapImage x:Key="defaultImg" UriSource="..\Resourсes\picture.png"/>
     </Page.Resources>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0*"/>
-        </Grid.ColumnDefinitions>
+       
         <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="30"/>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
-        <StackPanel Name="stackPanelOrder" Orientation="Horizontal">
+        <StackPanel>
+            <TextBlock>Заказ</TextBlock>
+        </StackPanel>
+        
+        <StackPanel Name="stackPanelOrder" Orientation="Horizontal" Grid.Row="1">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Номер заказа "></TextBlock>
                 <TextBlock Name="tbOrderNomer"></TextBlock>
@@ -51,7 +55,7 @@
                 </ComboBox>
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="2">
             <ListView Name="listViewProductsInOrder" Height="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="1">
                 <ListView.ItemContainerStyle>
@@ -88,12 +92,13 @@
 
             </ListView>
         </StackPanel>
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
             <TextBlock Text="Общая сумма: "></TextBlock>
             <TextBlock Name="tbItogo"></TextBlock>
             <TextBlock Text="Скидка: "></TextBlock>
             <TextBlock Name="tbPriceWithouDisc"></TextBlock>
             <Button Name="btnBack" Click="btnBack_Click">Вернуться</Button>
+            <Button Name="btnSaveChanges" Click="btnSaveChanges_Click">Сохранить</Button>
         </StackPanel>
 
     </Grid>

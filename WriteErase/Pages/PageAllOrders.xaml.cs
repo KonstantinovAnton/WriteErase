@@ -24,16 +24,27 @@ namespace WriteErase.Pages
         {
             InitializeComponent();
 
-            List<DataBase.Order> listOrder = Classes.Base.EM.Order.ToList();
-
+            List<DataBase.Order> listOrder = Classes.Base.EM.Order.ToList(); 
             listView.ItemsSource = listOrder;
         }
 
+        // Открыть заказ
         private void btnOpenOrder_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
             Classes.GlobalValues.orderID = Convert.ToInt32(btn.Uid);
             NavigationService.Navigate(new PageEditOrder());
+        }
+
+        private void btnEditOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        // Вернуться назад
+        private void btnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PageProduct());
         }
     }
 }

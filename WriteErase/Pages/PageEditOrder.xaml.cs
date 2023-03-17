@@ -65,8 +65,6 @@ namespace WriteErase.Pages
             tbItogo.Text = totalPrice.ToString("F") + " руб.";
             tbPriceWithouDisc.Text = (totalPriceWithoutDiscount - totalPrice).ToString("F") + " руб.";
 
-            //255 140
-
             bool isMore3Count = true;
             bool isNone = false;
 
@@ -108,11 +106,17 @@ namespace WriteErase.Pages
 
         }
 
+        // вернуться назад
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new PageAllOrders());
         }
 
-       
+        // сохранить изменения
+        private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Успешно сохранено", "Изменение", MessageBoxButton.OK, MessageBoxImage.Information);
+            NavigationService.Navigate(new PageAllOrders());
+        }
     }
 }

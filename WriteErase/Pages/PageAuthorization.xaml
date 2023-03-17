@@ -6,17 +6,23 @@
       xmlns:local="clr-namespace:WriteErase.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageAuthorization">
+      Title="PageAuthorization"
+       FontFamily="Comic Sans MS"
+        FontSize="20">
 
     <Grid>
         <StackPanel  Background="#76e383">
+            <TextBlock>Авторизация</TextBlock>
             <Label HorizontalAlignment="Center" Margin="0,120,72,0">Логин</Label>
-            <TextBox Name="textBoxLogin"  Width="140" >loginDEjrm2018</TextBox>
+            <TextBox Name="textBoxLogin"  Width="140" >loginDEjwl2018</TextBox>
             <Label HorizontalAlignment="Center" Margin="0,0,59,0">Пароль</Label>
-            <PasswordBox  Name="passBox" Width="140"  Password="Cpb+Im"></PasswordBox>
+            <PasswordBox  Name="passBox" Width="140"  Password="D4ZYHt"></PasswordBox>
+            <Image Margin="5" Name="captchaImage" Width="230" Height="80"></Image>
+            <TextBox Name="tbCaptcha" Width="120"></TextBox>
+            
             <Button Name="btnAuthorizate" Height="30"   Width="120"  Margin="0,20,0,0"  VerticalContentAlignment="Center" FontSize="20" Click="btnAuthorizate_Click">Войти</Button>
 
-            <Button Name="btn" Height="30"   Width="160"  Margin="0,20,0,0"  VerticalContentAlignment="Center" FontSize="20">каталог товаров</Button>
+            <Button Name="btnCatalog" Height="30"   Width="160"  Margin="0,20,0,0"  VerticalContentAlignment="Center" FontSize="20" Click="btn_Click">каталог товаров</Button>
 
         </StackPanel>
     </Grid>

@@ -24,11 +24,8 @@ namespace WriteErase
         {
             InitializeComponent();
             Classes.Base.EM = new DataBase.Entities1();
+            Classes.GlobalValues.attemp = 0;
             frm.Navigate(new Pages.PageAuthorization());
         }
-
-        
     }
-
-
 }

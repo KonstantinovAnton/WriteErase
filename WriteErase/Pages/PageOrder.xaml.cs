@@ -32,8 +32,6 @@ namespace WriteErase.Pages
 
             listOrder = new List<DataBase.Product>(); 
 
-            //listOrder = Classes.GlobalValues.listOrder;
-
             List<DataBase.OrderProduct> listOrderProduct = Classes.Base.EM.OrderProduct.Where(x => x.OrderID == 54).ToList();
 
 
@@ -51,13 +49,9 @@ namespace WriteErase.Pages
                 totalPriceWithoutDiscount = Classes.GlobalValues.totalPriceWithoutDiscount;
                 totalPrice = Classes.GlobalValues.totalPrice;
 
-               
-          
                 tbTotalPrice.Text = "Общая стоимость: " + string.Format("{0:F}", Classes.GlobalValues.totalPrice) + " руб.";
                 tbDiscountOrder.Text = "Скидка: " + string.Format("{0:F}", (Classes.GlobalValues.totalPriceWithoutDiscount - Classes.GlobalValues.totalPrice)) + " руб.";
             }
-
-
 
             cbPoint.ItemsSource = Classes.Base.EM.PickupPoint.ToList();
 
@@ -65,8 +59,13 @@ namespace WriteErase.Pages
             cbPoint.SelectedValuePath = "PickupPointNumberID";
 
             cbPoint.SelectedIndex = 0;
+
+            DataBase.User user = Classes.Base.EM.User.FirstOrDefault(x => x.UserID == Classes.GlobalValues.idUser);
+            if (user != null)
+                tbUser.Text = user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
         }
 
+        // получить итоговую цену
         private void getTotalPrice()
         {
 
@@ -83,6 +82,7 @@ namespace WriteErase.Pages
 
         }
 
+        // подгрузить цену
         private void tbCost_Loaded(object sender, RoutedEventArgs e)
         {
             TextBlock tb = (TextBlock)sender;
@@ -93,12 +93,14 @@ namespace WriteErase.Pages
             }
         }
 
+        // подгрузить цену со скидкой
         private void tbCostWithDiscount_Loaded(object sender, RoutedEventArgs e)
         {
             TextBlock textBlock = (TextBlock)sender;
             showTextBlock(textBlock);
         }
 
+        // отобразить текстовый блок
         private void showTextBlock(TextBlock tb)
         {
             if (tb.Uid != null)
@@ -117,6 +119,7 @@ namespace WriteErase.Pages
             showTextBlock(tb);
         }
 
+        // удалить из заказа
         private void btnDropFromOrder_Click(object sender, RoutedEventArgs e)
         {          
             Button btn = (Button)sender;
@@ -143,7 +146,7 @@ namespace WriteErase.Pages
             }
         }
 
-
+        // уменьшить кол-во
         private void btnMinus_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
@@ -212,18 +215,16 @@ namespace WriteErase.Pages
                     }
                 }
 
-            
             }
             catch
             {
 
             }
 
-            NavigationService.Navigate(new PageOrder());
-
-            
+            NavigationService.Navigate(new PageOrder());            
         }
 
+        // увеличить кол-во
         private void btnPlus_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
@@ -256,6 +257,48 @@ namespace WriteErase.Pages
 
         }
 
-        
+        // вернуться назад
+        private void btnGoBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new PageProduct());
+        }
+
+        // сформировать заказ
+        private void btnFormOrder_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int maxCode = 1;
+
+                List<DataBase.Order> maxOrderList = Classes.Base.EM.Order.ToList();
+                foreach (var item in maxOrderList)
+                {
+                    if (Convert.ToInt32(item.Code) > maxCode)
+                        maxCode = Convert.ToInt32(item.Code);
+                }
+
+                DataBase.Order order = new DataBase.Order();
+
+                order.OrderDate = DateTime.Now;
+                order.OrderDeliveryDate = DateTime.Now;
+                order.PickupPointID = 1;
+                if(Classes.GlobalValues.idUser == 0)
+                    order.UserID = 1;
+                else
+                    order.UserID = Classes.GlobalValues.idUser;
+                order.Code = Convert.ToString(maxCode + 1);
+
+                Classes.Base.EM.Order.Add(order);
+                Classes.Base.EM.SaveChanges();
+
+                MessageBox.Show("Заказ успешно сформирован", "Формирование заказа", MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationService.Navigate(new PageProduct());
+            }
+            catch
+            {
+                MessageBox.Show("Заказ не сформирован, попробуйте позже", "Формирование заказа", MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationService.Navigate(new PageProduct());
+            }
+        }
     }
 }

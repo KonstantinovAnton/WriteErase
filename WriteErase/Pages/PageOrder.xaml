@@ -6,7 +6,9 @@
       xmlns:local="clr-namespace:WriteErase.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageOrder">
+      Title="PageOrder"
+       FontFamily="Comic Sans MS"
+        FontSize="20">
 
     <Page.Resources>
         <BitmapImage x:Key="defaultImage" UriSource="..\Resourсes\picture.png"/>
@@ -14,12 +16,21 @@
 
     <Grid>
         <Grid.RowDefinitions>
-
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
+        <StackPanel>
+            <TextBlock>Просмотр заказа</TextBlock>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Name="tbUser"></TextBlock>
+            <TextBlock Text=" статус заказа: новый"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
             <ListView Name="listView" Height="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="1">
                 <ListView.ItemContainerStyle>
@@ -67,10 +78,12 @@
         
         
         
-        <StackPanel Grid.Row="1">
-            <StackPanel>
+        <StackPanel Grid.Row="3">
+            <StackPanel Orientation="Horizontal">
                 <TextBlock>Выберите пункт выдачи</TextBlock>
-                <ComboBox Name="cbPoint"></ComboBox>
+                <ComboBox Name="cbPoint" Width="100"></ComboBox>
+                <Button Name="btnFormOrder" Click="btnFormOrder_Click">Сформировать</Button>
+                <Button Name="btnGoBack" Click="btnGoBack_Click">Вернуться</Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Name="tbTotalPrice"></TextBlock>

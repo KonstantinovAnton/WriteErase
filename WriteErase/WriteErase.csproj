@@ -44,6 +44,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -73,6 +74,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Base.cs" />
+    <Compile Include="Classes\Captcha.cs" />
+    <Compile Include="Classes\CaptchaResult.cs" />
     <Compile Include="Classes\GlobalValues.cs" />
     <Compile Include="DataBase\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -229,6 +232,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resourсes\icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
