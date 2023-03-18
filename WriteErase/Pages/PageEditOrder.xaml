@@ -17,10 +17,10 @@
     <Grid>
        
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="30"/>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <StackPanel>
             <TextBlock>Заказ</TextBlock>
@@ -28,27 +28,27 @@
         
         <StackPanel Name="stackPanelOrder" Orientation="Horizontal" Grid.Row="1">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Номер заказа "></TextBlock>
+                <TextBlock Text="Номер заказа: "></TextBlock>
                 <TextBlock Name="tbOrderNomer"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Код "></TextBlock>
+                <TextBlock Text=", Код: "></TextBlock>
                 <TextBlock Name="tbOrderCode"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Дата заказа "></TextBlock>
+                <TextBlock Text=", Дата заказа "></TextBlock>
                 <TextBlock Name="tbOrderDate"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Дата доставки "></TextBlock>
+                <TextBlock Text=", Дата доставки "></TextBlock>
                 <TextBox Name="tbDelDate"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Клиент: "></TextBlock>
+                <TextBlock Text=", Клиент: "></TextBlock>
                 <TextBlock Name="tbUser"></TextBlock>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Статус"></TextBlock>
+                <TextBlock Text=", Статус"></TextBlock>
                 <ComboBox Name="cbStatus">
                     <ComboBoxItem>Новый</ComboBoxItem>
                     <ComboBoxItem>Завершен</ComboBoxItem>
@@ -56,7 +56,7 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="2">
-            <ListView Name="listViewProductsInOrder" Height="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            <ListView Name="listViewProductsInOrder" Height="450" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="1">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
@@ -95,10 +95,10 @@
         <StackPanel Grid.Row="3" Orientation="Horizontal">
             <TextBlock Text="Общая сумма: "></TextBlock>
             <TextBlock Name="tbItogo"></TextBlock>
-            <TextBlock Text="Скидка: "></TextBlock>
+            <TextBlock Text=" Скидка: "></TextBlock>
             <TextBlock Name="tbPriceWithouDisc"></TextBlock>
-            <Button Name="btnBack" Click="btnBack_Click">Вернуться</Button>
-            <Button Name="btnSaveChanges" Click="btnSaveChanges_Click">Сохранить</Button>
+            <Button Name="btnBack" Click="btnBack_Click" Margin="5,0" Width="120">Вернуться</Button>
+            <Button Name="btnSaveChanges" Click="btnSaveChanges_Click"  Margin="5,0" Width="120">Сохранить</Button>
         </StackPanel>
 
     </Grid>

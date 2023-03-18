@@ -234,7 +234,7 @@ namespace WriteErase.Pages
             catch
             {
             }
-            tbKorzina.Text = "В заказе " +  korzina.Count.ToString() + " товара";
+            tbKorzina.Text = "В заказе " +  korzina.Count.ToString() + " товар(ов)";
         }
 
 

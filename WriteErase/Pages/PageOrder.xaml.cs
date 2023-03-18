@@ -62,7 +62,7 @@ namespace WriteErase.Pages
 
             DataBase.User user = Classes.Base.EM.User.FirstOrDefault(x => x.UserID == Classes.GlobalValues.idUser);
             if (user != null)
-                tbUser.Text = user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
+                tbUser.Text = user.UserSurname + " " + user.UserName + " " + user.UserPatronymic + ", ";
         }
 
         // получить итоговую цену

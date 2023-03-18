@@ -16,7 +16,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="30"/>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="60"/>
@@ -31,7 +31,7 @@
             <TextBlock Text=" статус заказа: новый"></TextBlock>
         </StackPanel>
         <StackPanel Grid.Row="2">
-            <ListView Name="listView" Height="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            <ListView Name="listView" Height="450" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="1">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
@@ -59,12 +59,12 @@
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock>Кол-во</TextBlock>
 
-                                        <Button Width="20" Name="btnMinus" Click="btnMinus_Click" Uid="{Binding ProductArticleNumber}">-</Button>
+                                        <Button Width="20" Name="btnMinus" Click="btnMinus_Click" Uid="{Binding ProductArticleNumber}" Margin="5,0">-</Button>
                                         <TextBlock Name="textCount" Width="20" Text="{Binding Count}"></TextBlock>
-                                        <Button Width="20" Name="btnPlus" Click="btnPlus_Click" Uid="{Binding ProductArticleNumber}">+</Button>
-                                        
-                                        
-                                        <Button Name="btnDropFromOrder" Click="btnDropFromOrder_Click" Uid="{Binding ProductArticleNumber}">Убрать из заказа</Button>
+                                        <Button Width="20" Name="btnPlus" Click="btnPlus_Click" Uid="{Binding ProductArticleNumber}"  Margin="5,0">+</Button>
+
+
+                                        <Button Name="btnDropFromOrder" Click="btnDropFromOrder_Click" Uid="{Binding ProductArticleNumber}"  Margin="5,0">Убрать из заказа</Button>
                                     </StackPanel>
                                 </StackPanel>
                                 <TextBlock Text="{Binding ProductActualDiscount, StringFormat={}{0:D}%}" TextWrapping="Wrap" Margin="10" Grid.Column="2" Background="{Binding DiscountColor}" Uid="{Binding ProductActualDiscount}" Loaded="TextBlock_Loaded"/>
@@ -81,13 +81,13 @@
         <StackPanel Grid.Row="3">
             <StackPanel Orientation="Horizontal">
                 <TextBlock>Выберите пункт выдачи</TextBlock>
-                <ComboBox Name="cbPoint" Width="100"></ComboBox>
-                <Button Name="btnFormOrder" Click="btnFormOrder_Click">Сформировать</Button>
-                <Button Name="btnGoBack" Click="btnGoBack_Click">Вернуться</Button>
+                <ComboBox Name="cbPoint" Width="100" Margin="5,0"></ComboBox>
+                <Button Name="btnFormOrder" Click="btnFormOrder_Click" Margin="5,0" Width="150">Сформировать</Button>
+                <Button Name="btnGoBack" Click="btnGoBack_Click" Margin="5,0" Width="150">Вернуться</Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Name="tbTotalPrice"></TextBlock>
-                <TextBlock Name="tbDiscountOrder"></TextBlock>
+                <TextBlock Name="tbDiscountOrder" Margin="5,0,0,0"></TextBlock>
             </StackPanel>
             
         </StackPanel>

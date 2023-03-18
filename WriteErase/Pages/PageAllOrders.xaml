@@ -20,7 +20,7 @@
             <TextBlock>Все заказы</TextBlock>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <ListView Name="listView" Height="400" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            <ListView Name="listView" Height="450" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Row="1">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
@@ -34,8 +34,8 @@
                                 <StackPanel Grid.Column="1" Margin="10" Orientation="Horizontal">
                                     <TextBlock Text="{Binding Code}" TextWrapping="Wrap" Margin="10"/>
                                     <TextBlock Text="{Binding OrderDate, StringFormat=d}" TextWrapping="Wrap" Margin="10"/>
-                                    <Button Name="btnOpenOrder" Click="btnOpenOrder_Click" Uid="{Binding OrderID}">Открыть</Button>
-                                    <Button Name="btnEditOrder" Click="btnEditOrder_Click" Uid="{Binding OrderID}">Редактировать</Button>
+                                    <Button Name="btnOpenOrder" Click="btnOpenOrder_Click" Width="140" Uid="{Binding OrderID}">Открыть</Button>
+                                    <Button Name="btnEditOrder" Click="btnEditOrder_Click" Width="140" Margin="5,0" Uid="{Binding OrderID}">Редактировать</Button>
                                 </StackPanel>
                             </Grid>
                         </Border>
@@ -44,7 +44,7 @@
             </ListView>
         </StackPanel>
         <StackPanel Grid.Row="2">
-            <Button Name="btnGoBack" Click="btnGoBack_Click">Вернуться</Button>
+            <Button Name="btnGoBack" Click="btnGoBack_Click" Width="130">Вернуться</Button>
         </StackPanel>
     </Grid>
 </Page>
