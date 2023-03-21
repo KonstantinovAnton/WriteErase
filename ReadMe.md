@@ -1,43 +1,39 @@
-# Проект "TravelAgency" :airplane:
+# Project "WriteErase" :airplane:
 
-![image](https://f.partnerkin.com/uploads/storage/files/file_1622378162.gif)
+РџСЂРѕРµРєС‚ РїРѕ СѓС‡РµР±РЅРѕР№ РїСЂР°РєС‚РёРєРµ - <b>WriteErase</b>
 
 
-Проект по предмету `Разработка программных модулей` - <b>Туристическое агенство</b>
-
-## Как работать с проектом :wrench:
-
-Откройте проект через Visual Studio. Для этого Вам необходимо <b>зайти в Visual Studio</b>, затем <b>подключиться к GitHub</b> и <b>вставить ссылку</b> этого проекта: https://github.com/KonstantinovAnton/KonstantinovAnton
+РЎСЃС‹Р»РєР° РЅР° git: https://github.com/KonstantinovAnton/KonstantinovAnton
 
 [![video](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png)](https://www.youtube.com/watch?v=SqarOBqIlpU)
 
-Или скачайте <b>zip-архив</b>. Для этого:
-1. Откройте проект на github: https://github.com/KonstantinovAnton/KonstantinovAnton
-2. Нажмите на зеленую кнопку "<> Code" в правом верхнем углу
-3. Выберите Download ZIP
+Г€Г«ГЁ Г±ГЄГ Г·Г Г©ГІГҐ <b>zip-Г Г°ГµГЁГў</b>. Г„Г«Гї ГЅГІГ®ГЈГ®:
+1. ГЋГІГЄГ°Г®Г©ГІГҐ ГЇГ°Г®ГҐГЄГІ Г­Г  github: https://github.com/KonstantinovAnton/WriteErase
+2. ГЌГ Г¦Г¬ГЁГІГҐ Г­Г  Г§ГҐГ«ГҐГ­ГіГѕ ГЄГ­Г®ГЇГЄГі "<> Code" Гў ГЇГ°Г ГўГ®Г¬ ГўГҐГ°ГµГ­ГҐГ¬ ГіГЈГ«Гі
+3. Г‚Г»ГЎГҐГ°ГЁГІГҐ Download ZIP
 
-После этого разархивируйте ZIP-архив и откройте файл с расширение <i>.sln</i>
+ГЏГ®Г±Г«ГҐ ГЅГІГ®ГЈГ® Г°Г Г§Г Г°ГµГЁГўГЁГ°ГіГ©ГІГҐ ZIP-Г Г°ГµГЁГў ГЁ Г®ГІГЄГ°Г®Г©ГІГҐ ГґГ Г©Г« Г± Г°Г Г±ГёГЁГ°ГҐГ­ГЁГҐ <i>.sln</i>
 
-## Основные моменты в приложении :eyes:
+## ГЋГ±Г­Г®ГўГ­Г»ГҐ Г¬Г®Г¬ГҐГ­ГІГ» Гў ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГЁ :eyes:
 
-<b>Основные страницы приложения</b>
-+ Страницы администратора
+<b>ГЋГ±Г­Г®ГўГ­Г»ГҐ Г±ГІГ°Г Г­ГЁГ¶Г» ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї</b>
++ Г‘ГІГ°Г Г­ГЁГ¶Г» Г Г¤Г¬ГЁГ­ГЁГ±ГІГ°Г ГІГ®Г°Г 
   + PageAdminTour
   + PageAdminAddTour
   + PageAdminMenu
   + PageAdminSale
   + PageAdminShowData
-+ Страницы пользователя
++ Г‘ГІГ°Г Г­ГЁГ¶Г» ГЇГ®Г«ГјГ§Г®ГўГ ГІГҐГ«Гї
   + PageUserMenu
-+ Общие страницы
++ ГЋГЎГ№ГЁГҐ Г±ГІГ°Г Г­ГЁГ¶Г»
   + PageRegistration
   + PageAuthorization
 
-<b>Для входа в приложение</b> воспользуйтесь акутальными логином и паролем, указанными на главной странице <i>MainWindow.xml</i>
+<b>Г„Г«Гї ГўГµГ®Г¤Г  Гў ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГҐ</b> ГўГ®Г±ГЇГ®Г«ГјГ§ГіГ©ГІГҐГ±Гј Г ГЄГіГІГ Г«ГјГ­Г»Г¬ГЁ Г«Г®ГЈГЁГ­Г®Г¬ ГЁ ГЇГ Г°Г®Г«ГҐГ¬, ГіГЄГ Г§Г Г­Г­Г»Г¬ГЁ Г­Г  ГЈГ«Г ГўГ­Г®Г© Г±ГІГ°Г Г­ГЁГ¶ГҐ <i>MainWindow.xml</i>
 ```xml
 <!--
-    ЛОГИН АДМИНИСТРАТОРА: admin
-    ПАРОЛЬ АДМИНИСТРАТОРА: 1234
+    Г‹ГЋГѓГ€ГЌ ГЂГ„ГЊГ€ГЌГ€Г‘Г’ГђГЂГ’ГЋГђГЂ: admin
+    ГЏГЂГђГЋГ‹Гњ ГЂГ„ГЊГ€ГЌГ€Г‘Г’ГђГЂГ’ГЋГђГЂ: 1234
  -->
     
     <Window x:Class="TravelAgency.MainWindow"
@@ -47,13 +43,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelAgency"
         mc:Ignorable="d"
-        Title="ТурАгенство" Height="530" Width="800"
+        Title="Г’ГіГ°ГЂГЈГҐГ­Г±ГІГўГ®" Height="530" Width="800"
         Background="#FF3F3F46"    
             >
     <Grid>
 ```
 
-Подключение к БД
+ГЏГ®Г¤ГЄГ«ГѕГ·ГҐГ­ГЁГҐ ГЄ ГЃГ„
 ```C#
 namespace TravelAgency
 {
@@ -89,8 +85,8 @@ namespace TravelAgency
 }
 ```
 
-## Автор :man_with_turban:
+## ГЂГўГІГ®Г° :man_with_turban:
 
- :neckbeard: **Константинов Антон** - *Travel Agency* - [Мой аккаунт на GitHub](https://github.com/KonstantinovAnton)
+ :neckbeard: **ГЉГ®Г­Г±ГІГ Г­ГІГЁГ­Г®Гў ГЂГ­ГІГ®Г­** - *Travel Agency* - [ГЊГ®Г© Г ГЄГЄГ ГіГ­ГІ Г­Г  GitHub](https://github.com/KonstantinovAnton)
 
- :e-mail: Рабочая почта - akonstantinov.2003.sokol@gmail.com
+ :e-mail: ГђГ ГЎГ®Г·Г Гї ГЇГ®Г·ГІГ  - akonstantinov.2003.sokol@gmail.com
