@@ -16,8 +16,8 @@
     
    
 
-## Àâòîð :man_with_turban:
+## Справка :man_with_turban:
 
- :neckbeard: **Разработчик** - *Константинов Антон* - [Ìîé àêêàóíò íà GitHub](https://github.com/KonstantinovAnton)
+ :neckbeard: **Разработчик** - *Константинов Антон* - (https://github.com/KonstantinovAnton)
 
- :e-mail: Ðàáî÷àÿ ïî÷òà - akonstantinov.2003.sokol@gmail.com
+ :e-mail: моя почта - akonstantinov.2003.sokol@gmail.com
